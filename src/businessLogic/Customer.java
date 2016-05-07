@@ -17,6 +17,9 @@ public class Customer {
     private String phone;
     private String password;
     private String name;
+    
+    private long id;
+    
     private LinkedList<Rental> rentals;
     private LinkedList<Request> requests;
     
@@ -27,5 +30,8 @@ public class Customer {
         this.password = Password; //maybe encrypt??
         this.name = Name;
     }
+   
+    public void setID(long id) {this.id= id;}
+    public long getID(){return id;}
     
 }

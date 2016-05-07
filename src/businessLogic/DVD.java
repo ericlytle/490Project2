@@ -19,4 +19,9 @@ public class DVD {
         this.serialNumber = SerialNumber;
         this.lost = false;
     }
+    
+    public Movie getMovie(){return movie;}
+    
+    @Override
+    public String toString(){return movie.getName() + ", SN: " + serialNumber;}
 }

@@ -18,4 +18,9 @@ public class Actor {
         this.name = Name;
         this.gender = Gender;
     }
+    
+    public String getName()
+    {
+        return name;
+    }
 }
