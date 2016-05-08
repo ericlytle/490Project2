@@ -111,5 +111,108 @@ public class Controller {
         return null;
     }
     
+    //Search for movie based on keyword
+    public LinkedList<Movie> findMoviesByKeyword(Keyword keyword)
+    {        
+        LinkedList<Movie> results = new LinkedList<>();
+        
+        //Returns a list of movies
+        for (Movie movie : getMovies())
+        {
+            if (movie.hasKeyword(keyword))
+            {
+                //System.out.println(movie.toString());
+                results.add(movie);
+            }
+        }
+        return results;
+    }
     
+    //Is the movie available for rental?
+    public boolean isAvailable(Movie movie)
+    {
+        
+        int numCopies = numberOfDVDsByMovie(movie);
+        int numUnavailable = 0;
+        for (Customer cust : customers)
+        {
+            for (Rental rental : cust.getRentals())
+            {
+                if (rental.getDVD().getMovie() == movie)
+                {
+                    numUnavailable += 1;
+                }
+            }
+        }
+        
+        if (numCopies > numUnavailable)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    
+    //Returns the number of DVD copies that a particular movie has by movie ID.
+    public int numberOfDVDsByMovieID(long movieID)
+    {
+        int result = 0;
+        for (DVD dvd : dvds)
+        {
+            if (dvd.getMovie().getID() == movieID)
+            {
+                result += 1;
+            }
+        }
+        return result;
+    }
+    
+    //Returns the number of DVD copies 
+    public int numberOfDVDsByMovie(Movie movie)
+    {
+        int result = 0;
+        for (DVD dvd : dvds)
+        {
+            if (dvd.getMovie() == movie)
+            {
+                result += 1;
+            }
+        }
+        return result;
+    }
+    
+   //Print all of the movies specified and whether or not they are available.
+   public void printMoviesAndStatus(LinkedList<Movie> movies)
+   {
+       for (Movie mov : movies)
+       {
+           System.out.println(mov.toString() + " || Available: " + isAvailable(mov));
+       }
+   }
+   
+   //Returns the first SN of a DVD copy of a movie that is available.
+   public long getDVDSNAvailable(Movie movie)
+   {
+       if (isAvailable(movie))
+       {
+           for (DVD dvd : dvds)
+           {
+               if (dvd.getMovie() == movie)
+               {
+                   return dvd.getID();
+               }
+           }
+       }
+       
+       return -1; //Not available
+   }
+   
+   public DVD findAvailableDVDByMovie(Movie movie)
+   {
+       long dvdID = getDVDSNAvailable(movie);
+       return findDVDByID(dvdID);
+   }
+           
 }

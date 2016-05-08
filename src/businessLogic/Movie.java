@@ -62,4 +62,16 @@ public class Movie {
     public void setID(long id) {this.id = id;}
     
     public long getID() {return id;}
+    
+    public boolean hasKeyword(Keyword keyword)
+    {
+        for (Keyword key : keywords)
+        {
+            if (key.getKeyword().equals(keyword.getKeyword()))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
 }

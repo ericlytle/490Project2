@@ -5,6 +5,8 @@
  */
 package businessLogic;
 
+import java.util.LinkedList;
+
 /**
  *
  * @author Tamas
@@ -145,4 +147,6 @@ public class Loader {
             System.out.println(cust.toString());
         }
     }
+    
+
 }

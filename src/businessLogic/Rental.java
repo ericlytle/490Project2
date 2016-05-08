@@ -35,4 +35,8 @@ public class Rental {
         this.returnDate.add(Calendar.DAY_OF_MONTH, 7);
         this.review = Review;
     }
+    
+    public DVD getDVD() {return dvd;}
+    
+    public Calendar getReturnDate() {return returnDate;}
 }

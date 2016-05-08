@@ -30,6 +30,8 @@ public class Customer {
         this.password = Password;
         this.name = Name;
         this.id = id;
+        this.rentals = new LinkedList<>();
+        this.requests = new LinkedList<>();
     }
     
     @Override
@@ -40,5 +42,13 @@ public class Customer {
    
     public void setID(long id) {this.id= id;}
     public long getID(){return id;}
+    
+    public String getName() {return name;}
+    
+    public LinkedList<Rental> getRentals() {return rentals;}
+    
+    public LinkedList<Request> getRequests() {return requests;}
+    
+    public void addRental(Rental rental) {this.rentals.add(rental);}
     
 }
