@@ -25,6 +25,7 @@ public class Rental {
         this.returnDate = RentDate;
         //Mark return date to the default 1 week (7 days)
         this.returnDate.add(Calendar.DAY_OF_MONTH, 7);
+        status = Status;
     }
     
     public Rental(DVD DVD, Calendar RentDate, Status Status, Review Review){
@@ -39,4 +40,11 @@ public class Rental {
     public DVD getDVD() {return dvd;}
     
     public Calendar getReturnDate() {return returnDate;}
+    
+    @Override
+    public String toString()
+    {
+        return dvd.getMovie().getName() + ", Rent Date: " + rentDate.getTime().toString() +
+                " Return Date: " + returnDate.getTime().toString() + " Status: " + status.name();
+    }
 }

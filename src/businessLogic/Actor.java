@@ -23,4 +23,9 @@ public class Actor {
     {
         return name;
     }
+    
+    public Gender getGender()
+    {
+        return gender;
+    }
 }

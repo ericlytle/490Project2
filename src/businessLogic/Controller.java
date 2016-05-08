@@ -225,7 +225,7 @@ public class Controller {
        {
            for (Actor act : movie.getActors())
            {
-               if (act == actor)
+               if (act.getName().equals(actor.getName()) && act.getGender() == actor.getGender())
                {
                    movies.add(movie);
                }
@@ -249,5 +249,35 @@ public class Controller {
        }
        return results;
    }
-           
+   
+   //Retrieve all of the unique keywords in the system.
+   public Set<Keyword> getAllKeywords()
+   {
+       Set<Keyword> results = new HashSet<>();
+       
+       for (DVD dvd : dvds)
+       {
+           for (Keyword key : dvd.getMovie().getKeywords())
+           {
+               results.add(key);
+           }
+       }
+       
+       return results;
+   }
+   
+   //Retrieve all of the movies that match the specified Genre.
+   public LinkedList<Movie> findMoviesWithGenre(Movie.Genre genre)
+   {
+       LinkedList<Movie> results = new LinkedList<>();
+       
+       for (Movie movie : getMovies())
+       {
+           if (movie.getGenre() == genre)
+           {
+               results.add(movie);
+           }
+       }
+       return results;
+   }           
 }

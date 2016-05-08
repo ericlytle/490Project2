@@ -74,4 +74,6 @@ public class Movie {
         }
         return false;
     }
+    
+    public Genre getGenre() {return this.genre;}
 }

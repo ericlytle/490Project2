@@ -23,5 +23,22 @@ public class Request {
         this.requestDate = RequestDate;
         this.responseDate = ResponseDate;
         this.movie = Movie;
+        this.status = Status.Wait; //Default to Wait status
+    }
+
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
+    }
+    
+    @Override
+    public String toString()
+    {
+        return "* Request Details || Request Date: " + requestDate.getTime().toString()
+                + " Response Date: " + responseDate.getTime().toString() + "\n* Movie: " + movie.getName()
+                + " Status: " + status.name();
     }
 }

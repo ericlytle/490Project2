@@ -5,8 +5,6 @@
  */
 package businessLogic;
 
-import java.util.LinkedList;
-
 /**
  *
  * @author Tamas
@@ -16,12 +14,19 @@ public class Loader {
     //Method for adding DVDs and movies to the rental system.
     public void populateInventory(Controller controller)
     {
+        
+        //Common keywords
+        Keyword Fun = new Keyword("Fun");
+        Keyword Suspenseful = new Keyword("Suspenseful");
+        Keyword Hilarious = new Keyword("Hilarious");
+        Keyword Space = new Keyword("Space");
+        
         //Interstellar!!!
         Movie Interstellar = new Movie("Interstellar", 2014, Movie.Rating.PG13, Movie.Genre.SciFi, null, null);
         Interstellar.addActor(new Actor("Matthew McConaughey",Actor.Gender.Male));
         Interstellar.addActor(new Actor("Anne Hathaway",Actor.Gender.Female));
         Interstellar.addKeyword(new Keyword("Breathtaking"));
-        Interstellar.addKeyword(new Keyword("Space"));
+        Interstellar.addKeyword(Space);
         Interstellar.setID(1); //Unique Movie ID
         
         //Rush Hour
@@ -29,7 +34,7 @@ public class Loader {
         Actor JackieChan = new Actor("Jackie Chan", Actor.Gender.Male);
         RushHour.addActor(JackieChan);
         RushHour.addActor(new Actor("Chris Tucker", Actor.Gender.Male));
-        RushHour.addKeyword(new Keyword("Hilarious"));
+        RushHour.addKeyword(Hilarious);
         RushHour.addKeyword(new Keyword("Crime"));
         RushHour.setID(2);
         
@@ -37,14 +42,14 @@ public class Loader {
         Movie StarWars7 = new Movie("Star Wars: The Force Awakens", 2015, Movie.Rating.PG13, Movie.Genre.SciFi, null, null);
         StarWars7.addActor(new Actor("Daisy Ridley", Actor.Gender.Female));
         StarWars7.addActor(new Actor("Mark Hamill",Actor.Gender.Male));
-        StarWars7.addKeyword(new Keyword("Space"));
+        StarWars7.addKeyword(Space);
         StarWars7.addKeyword(new Keyword("Future"));
         StarWars7.setID(3);
         
         //Jackie Chan's First Strike
         Movie JCFS = new Movie("Jackie Chan's First Strike", 1996, Movie.Rating.PG13, Movie.Genre.Action, null, null);
         JCFS.addActor(JackieChan);
-        JCFS.addKeyword(new Keyword("Fun"));
+        JCFS.addKeyword(Fun);
         JCFS.addKeyword(new Keyword("Foreign"));
         JCFS.setID(4);
         
@@ -62,7 +67,7 @@ public class Loader {
         Eraser.addActor(new Actor("Vanessa Williams", Actor.Gender.Female));
         Eraser.addKeyword(new Keyword("Explosive"));
         Eraser.addKeyword(new Keyword("Intense"));
-        Eraser.addKeyword(new Keyword("Suspenseful"));
+        Eraser.addKeyword(Suspenseful);
         Eraser.setID(6);
         
         //Shrek
@@ -70,15 +75,15 @@ public class Loader {
         Shrek.addActor(new Actor("Mike Meyers", Actor.Gender.Male));
         Shrek.addActor(new Actor("Eddie Murphy", Actor.Gender.Male));
         Shrek.addActor(new Actor("Cameron Diaz", Actor.Gender.Female));
-        Shrek.addKeyword(new Keyword("Fun"));
-        Shrek.addKeyword(new Keyword("Hilarious"));
+        Shrek.addKeyword(Fun);
+        Shrek.addKeyword(Hilarious);
         Shrek.addKeyword(new Keyword("Animation"));
         Shrek.setID(7);
         
         //Life of Pi
         Movie Pi = new Movie("Life of Pi",2012, Movie.Rating.PG, Movie.Genre.Family, null, null);
         Pi.addActor(new Actor("Suraj Sharma", Actor.Gender.Male));
-        Pi.addKeyword(new Keyword("Suspenseful"));
+        Pi.addKeyword(Suspenseful);
         Pi.addKeyword(new Keyword("Heartbreaking"));
         Pi.setID(8);
         
@@ -108,15 +113,12 @@ public class Loader {
         Customer cust3 = new Customer("CUSTY3@gmail.com", "Address 3", "123-456-7890", "Password", "Kimbo", 3);
         
         Customer cust4 = new Customer("CUSTY4@gmail.com", "Address 4", "123-456-7890", "Password", "Kesha", 4);
-       
-        //Add existing rentals, requests
         
         //Add to customer list
         controller.addCustomer(cust1);
         controller.addCustomer(cust2);
         controller.addCustomer(cust3);
-        controller.addCustomer(cust4);
-        
+        controller.addCustomer(cust4);        
     }
     
     //Print out movies in the rental system, not DVD copies.
