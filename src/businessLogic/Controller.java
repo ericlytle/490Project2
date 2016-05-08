@@ -47,11 +47,14 @@ public class Controller {
         this.customers.remove(customer);
     }
     
+    public LinkedList<Customer> getCustomers() {return customers;}
+    
     //DVD related
     public void addDVD(DVD dvd) {this.dvds.add(dvd);}
     
     public void removeDVD(DVD dvd) {this.dvds.remove(dvd);}
     
+       
     //Return a collection of unique movies.
     public Set<Movie> getMovies()
     {
@@ -66,8 +69,47 @@ public class Controller {
     }
     
     //Return a collection of DVDs.
-    public LinkedList<DVD> getDVDs()
+    public LinkedList<DVD> getDVDs(){return dvds;}
+    
+    //ID based searches
+    //Find customer by ID
+    public Customer findCustomerByID(long id)
     {
-        return dvds;
+        for (Customer customer : customers)
+        {
+            if (customer.getID() == id)
+            {
+                return customer;
+            }
+        }
+        return null;
     }
+    
+    //Find a movie by ID
+    public Movie findMovieByID(long id)
+    {
+        for (Movie movie : getMovies())
+        {
+            if (movie.getID() == id)
+            {
+                return movie;
+            }
+        }
+        return null;
+    }
+    
+    //Find a DVD by ID
+    public DVD findDVDByID(long id)
+    {
+        for (DVD dvd : dvds)
+        {
+            if (dvd.getID() == id)
+            {
+                return dvd;
+            }
+        }
+        return null;
+    }
+    
+    
 }

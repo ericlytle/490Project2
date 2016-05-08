@@ -20,6 +20,7 @@ public class Loader {
         Interstellar.addActor(new Actor("Anne Hathaway",Actor.Gender.Female));
         Interstellar.addKeyword(new Keyword("Breathtaking"));
         Interstellar.addKeyword(new Keyword("Space"));
+        Interstellar.setID(1); //Unique Movie ID
         
         //Rush Hour
         Movie RushHour = new Movie("Rush Hour", 1998, Movie.Rating.PG13, Movie.Genre.Comedy, null, null);
@@ -27,6 +28,7 @@ public class Loader {
         RushHour.addActor(new Actor("Chris Tucker", Actor.Gender.Male));
         RushHour.addKeyword(new Keyword("Hilarious"));
         RushHour.addKeyword(new Keyword("Crime"));
+        RushHour.setID(2);
         
         //Star Wars: The Force Awakens
         Movie StarWars7 = new Movie("Star Wars: The Force Awakens", 2015, Movie.Rating.PG13, Movie.Genre.SciFi, null, null);
@@ -34,12 +36,14 @@ public class Loader {
         StarWars7.addActor(new Actor("Mark Hamill",Actor.Gender.Male));
         StarWars7.addKeyword(new Keyword("Space"));
         StarWars7.addKeyword(new Keyword("Future"));
+        StarWars7.setID(3);
         
         //Jackie Chan's First Strike
         Movie JCFS = new Movie("Jackie Chan's First Strike", 1996, Movie.Rating.PG13, Movie.Genre.Action, null, null);
         JCFS.addActor(new Actor("Jackie Chan", Actor.Gender.Male));
         JCFS.addKeyword(new Keyword("Fun"));
         JCFS.addKeyword(new Keyword("Foreign"));
+        JCFS.setID(4);
         
         //The Mummy
         Movie TheMummy = new Movie("The Mummy", 1999, Movie.Rating.PG13, Movie.Genre.Action, null, null);
@@ -47,6 +51,7 @@ public class Loader {
         TheMummy.addActor(new Actor("Rachel Weisz", Actor.Gender.Female));
         TheMummy.addKeyword(new Keyword("Adventure"));
         TheMummy.addKeyword(new Keyword("Egypt"));
+        TheMummy.setID(5);
         
         //Eraser
         Movie Eraser = new Movie("Eraser", 1996, Movie.Rating.R, Movie.Genre.Action, null, null);
@@ -55,6 +60,7 @@ public class Loader {
         Eraser.addKeyword(new Keyword("Explosive"));
         Eraser.addKeyword(new Keyword("Intense"));
         Eraser.addKeyword(new Keyword("Suspenseful"));
+        Eraser.setID(6);
         
         //Shrek
         Movie Shrek = new Movie("Shrek", 2001, Movie.Rating.PG, Movie.Genre.Family, null, null);
@@ -64,12 +70,14 @@ public class Loader {
         Shrek.addKeyword(new Keyword("Fun"));
         Shrek.addKeyword(new Keyword("Hilarious"));
         Shrek.addKeyword(new Keyword("Animation"));
+        Shrek.setID(7);
         
         //Life of Pi
         Movie Pi = new Movie("Life of Pi",2012, Movie.Rating.PG, Movie.Genre.Family, null, null);
         Pi.addActor(new Actor("Suraj Sharma", Actor.Gender.Male));
         Pi.addKeyword(new Keyword("Suspenseful"));
         Pi.addKeyword(new Keyword("Heartbreaking"));
+        Pi.setID(8);
         
         //Add multiple copies of these movies as DVDs to the system.       
         controller.addDVD(new DVD(Interstellar, 1));
@@ -84,6 +92,28 @@ public class Loader {
         controller.addDVD(new DVD(Shrek, 10));
         controller.addDVD(new DVD(Shrek, 11));
         controller.addDVD(new DVD(Pi, 12));   
+    }
+    
+    //Add Customers to the rental system.
+    public void populateCustomers(Controller controller)
+    {
+        //String Email, String Address, String Phone, String Password, String Name,long id)
+        Customer cust1 = new Customer("CUSTY1@gmail.com", "Address 1", "123-456-7890", "Password", "John Connor", 1);
+        
+        Customer cust2 = new Customer("CUSTY2@gmail.com", "Address 2", "123-456-7890", "Password", "Francine", 2);
+        
+        Customer cust3 = new Customer("CUSTY3@gmail.com", "Address 3", "123-456-7890", "Password", "Kimbo", 3);
+        
+        Customer cust4 = new Customer("CUSTY4@gmail.com", "Address 4", "123-456-7890", "Password", "Kesha", 4);
+       
+        //Add existing rentals, requests
+        
+        //Add to customer list
+        controller.addCustomer(cust1);
+        controller.addCustomer(cust2);
+        controller.addCustomer(cust3);
+        controller.addCustomer(cust4);
+        
     }
     
     //Print out movies in the rental system, not DVD copies.
@@ -104,5 +134,15 @@ public class Loader {
         {
             System.out.println(dvd.toString());
         }     
+    }
+    
+    //Print out of all the customers in the rental system.
+    public void printCustomers(Controller controller)
+    {
+        System.out.println("Customers");
+        for (Customer cust : controller.getCustomers())
+        {
+            System.out.println(cust.toString());
+        }
     }
 }

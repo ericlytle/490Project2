@@ -21,6 +21,8 @@ public class Movie {
     public enum Genre{Action, Comedy, Horror, SciFi, Family}
     public enum Rating{G, PG, PG13, R};
     
+    private long id;
+    
     public Movie(String Name, int Year, Rating Rating, Genre Genre, LinkedList<Keyword> Keywords, LinkedList<Actor> Actors){
         this.name = Name;
         this.year = Year;
@@ -35,7 +37,7 @@ public class Movie {
     @Override
     public String toString()
     {
-        String output = name + ", " + year + ", " + rating.name() + ", " + genre.name() + ", Actors: ";
+        String output = name + ", " + year + ", " + rating.name() + ", " + genre.name() + " || Actors: ";
         for (Actor actor : actors){output += actor.getName() + ", ";}
         output += "Keywords: ";
         for (Keyword keyword : keywords){output += keyword.getKeyword() + ", ";}
@@ -56,4 +58,8 @@ public class Movie {
     public LinkedList<Keyword> getKeywords() {return keywords;}
     
     public String getName() {return name;}
+    
+    public void setID(long id) {this.id = id;}
+    
+    public long getID() {return id;}
 }

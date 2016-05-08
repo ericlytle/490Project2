@@ -23,12 +23,19 @@ public class Customer {
     private LinkedList<Rental> rentals;
     private LinkedList<Request> requests;
     
-    public Customer(String Email, String Address, String Phone, String Password, String Name){
+    public Customer(String Email, String Address, String Phone, String Password, String Name,long id){
         this.email = Email;
         this.address = Address;
         this.phone = Phone;
-        this.password = Password; //maybe encrypt??
+        this.password = Password;
         this.name = Name;
+        this.id = id;
+    }
+    
+    @Override
+    public String toString()
+    {
+        return "Name: " + name + " ID: " + id + " Email: " + email + " Phone #: " + phone + " Address: " + address + " Password: " + password;
     }
    
     public void setID(long id) {this.id= id;}

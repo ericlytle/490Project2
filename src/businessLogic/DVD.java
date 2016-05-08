@@ -22,6 +22,8 @@ public class DVD {
     
     public Movie getMovie(){return movie;}
     
+    public long getID() {return serialNumber;}
+    
     @Override
     public String toString(){return movie.getName() + ", SN: " + serialNumber;}
 }
