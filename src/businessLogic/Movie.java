@@ -18,7 +18,7 @@ public class Movie {
     private Genre genre;
     private int year;
     private String name;
-    public enum Genre{Action, Comedy, Horror, SciFi}
+    public enum Genre{Action, Comedy, Horror, SciFi, Family}
     public enum Rating{G, PG, PG13, R};
     
     public Movie(String Name, int Year, Rating Rating, Genre Genre, LinkedList<Keyword> Keywords, LinkedList<Actor> Actors){
