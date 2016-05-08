@@ -209,10 +209,45 @@ public class Controller {
        return -1; //Not available
    }
    
+   //Returns a DVD object that is available to rent.
    public DVD findAvailableDVDByMovie(Movie movie)
    {
        long dvdID = getDVDSNAvailable(movie);
        return findDVDByID(dvdID);
+   }
+   
+   //Find all movies containing an actor.
+   public LinkedList<Movie> findMoviesWithActor(Actor actor)
+   {
+       LinkedList<Movie> movies = new LinkedList<>();
+       
+       for (Movie movie : getMovies())
+       {
+           for (Actor act : movie.getActors())
+           {
+               if (act == actor)
+               {
+                   movies.add(movie);
+               }
+           }
+       }
+       
+       return movies;
+   }
+   
+   //Retrieve all of the unique actors in the system.
+   public Set<Actor> getAllActors()
+   {
+       Set<Actor> results = new HashSet<>();
+       
+       for (DVD dvd : dvds)
+       {
+           for (Actor act : dvd.getMovie().getActors())
+           {
+               results.add(act);
+           }
+       }
+       return results;
    }
            
 }

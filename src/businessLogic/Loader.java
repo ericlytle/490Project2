@@ -26,7 +26,8 @@ public class Loader {
         
         //Rush Hour
         Movie RushHour = new Movie("Rush Hour", 1998, Movie.Rating.PG13, Movie.Genre.Comedy, null, null);
-        RushHour.addActor(new Actor("Jackie Chan", Actor.Gender.Male));
+        Actor JackieChan = new Actor("Jackie Chan", Actor.Gender.Male);
+        RushHour.addActor(JackieChan);
         RushHour.addActor(new Actor("Chris Tucker", Actor.Gender.Male));
         RushHour.addKeyword(new Keyword("Hilarious"));
         RushHour.addKeyword(new Keyword("Crime"));
@@ -42,7 +43,7 @@ public class Loader {
         
         //Jackie Chan's First Strike
         Movie JCFS = new Movie("Jackie Chan's First Strike", 1996, Movie.Rating.PG13, Movie.Genre.Action, null, null);
-        JCFS.addActor(new Actor("Jackie Chan", Actor.Gender.Male));
+        JCFS.addActor(JackieChan);
         JCFS.addKeyword(new Keyword("Fun"));
         JCFS.addKeyword(new Keyword("Foreign"));
         JCFS.setID(4);

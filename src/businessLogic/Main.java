@@ -63,6 +63,15 @@ public class Main {
         System.out.println("System: Thank you " + cust1.getName() + ", the rental is due on " + rental1.getReturnDate().getTime().toString());
         System.out.println("***************************************************************");
         
-        
+        //Customer search for movie based on actor.
+        Customer cust2 = controller.findCustomerByID(2);
+        System.out.println("System: Hello " + cust2.getName() + "! What would you like to do?");
+        System.out.println(cust2.getName() + ": Search for movies with actor, 'Jackie Chan' please.");
+        System.out.println("\nSystem: Movies Matching Criteria: ");
+        //LinkedList<Movie> results2 = controller.findMoviesWithActor(new Actor("Jackie Chan",Actor.Gender.Male));
+        for (Actor actor : controller.getAllActors())
+        {
+            System.out.println(actor.getName());
+        }
     }
 }
