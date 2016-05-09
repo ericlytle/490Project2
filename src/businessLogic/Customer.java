@@ -17,6 +17,7 @@ public class Customer {
     private String phone;
     private String password;
     private String name;
+    private double lateCharges;
     
     private long id;
     
@@ -68,5 +69,37 @@ public class Customer {
             System.out.println(rental.toString());
         }
     }
+    
+    //If a customer only has one active rental, it returns that rental,
+    //null otherwise.
+    public Rental grabActiveRental()
+    {
+        LinkedList<Rental> activeRentals = new LinkedList<>();
+        
+        for (Rental rental : rentals)
+        {
+            if (rental.getStatus() == Rental.Status.Rented)
+            {
+                activeRentals.add(rental);
+            }
+        }
+        
+        if (activeRentals.size() == 1)
+        {
+            return activeRentals.getFirst();
+        }
+        
+        return null;
+    }
+
+    public double getLateCharges() {
+        return lateCharges;
+    }
+
+    public void setLateCharges(double lateCharges) {
+        this.lateCharges = lateCharges;
+    }
+    
+    
     
 }

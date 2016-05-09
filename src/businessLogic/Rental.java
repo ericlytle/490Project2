@@ -47,4 +47,14 @@ public class Rental {
         return dvd.getMovie().getName() + ", Rent Date: " + rentDate.getTime().toString() +
                 " Return Date: " + returnDate.getTime().toString() + " Status: " + status.name();
     }
+    
+    public Status getStatus()
+    {
+        return status;
+    }
+    
+    public void setStatus(Status status)
+    {
+        this.status = status;
+    }
 }

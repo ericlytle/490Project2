@@ -138,7 +138,7 @@ public class Controller {
         {
             for (Rental rental : cust.getRentals())
             {
-                if (rental.getDVD().getMovie() == movie)
+                if (rental.getDVD().getMovie() == movie && rental.getStatus() == Rental.Status.Rented)
                 {
                     numUnavailable += 1;
                 }
@@ -187,6 +187,15 @@ public class Controller {
    public void printMoviesAndStatus(LinkedList<Movie> movies)
    {
        for (Movie mov : movies)
+       {
+           System.out.println(mov.toString() + " || Available: " + isAvailable(mov));
+       }
+   }
+   
+   //Print all of the movies specified and whether or not they are available.
+   public void printMoviesAndStatus()
+   {
+       for (Movie mov : getMovies())
        {
            System.out.println(mov.toString() + " || Available: " + isAvailable(mov));
        }

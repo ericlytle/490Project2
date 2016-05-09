@@ -77,7 +77,7 @@ public class Main {
         Rental RushHourRental = new Rental(controller.findAvailableDVDByMovie(controller.findMovieByID(2)),Calendar.getInstance(),Rental.Status.Rented);
         System.out.println("System: Okay, Total Due: $2.00");
         System.out.println(cust2.getName() + ": Here is my money.");
-        cust1.addRental(RushHourRental);
+        cust2.addRental(RushHourRental);
         System.out.println("System: Thank you " + cust2.getName() + ", the rental is due on " + RushHourRental.getReturnDate().getTime().toString());
         //controller.printMoviesAndStatus(results2); //Uncomment this line to see the availability status change upon rental.
         System.out.println("***************************************************************");
@@ -117,6 +117,37 @@ public class Main {
         
         //Returning Movies
         System.out.println("\n\nReturn Movie.");
+        System.out.println("***************************************************************");
+        
+        //Scenario in which an employee checks in a movie that a customer turned in on time.
+        //Customer 4 returns Shrek
+        System.out.println("Hello Employee, what you like to do today?");
+        System.out.println("Employee: A customer, Kesha, has returned their movie, Shrek, on time.");
+        System.out.println("System: Provide the DVD ID.");
+        System.out.println("Employee: Here it is: " + cust4.grabActiveRental().getDVD().getID());
+        cust4.grabActiveRental().setStatus(Rental.Status.Returned);
+        System.out.println("System: The DVD has been returned on time. There are no late fees.");
+        System.out.println("System: Here are Kesha's current rentals: ");
+        cust4.printRentals();
+        
+        System.out.println("\n\nHere is a quick view of the currently available and unavailable movies in the system:\n");
+        controller.printMoviesAndStatus();
+        System.out.println("***************************************************************");
+        //Scenario in which an employee check in a movie that a customer turned in 3 days late.
+        System.out.println("Hello Employee, what you like to do today?");
+        System.out.println("Employee: A customer, John Connor, has returned their movie, Eraser, 3 days late.");
+        System.out.println("System: He was probably time travelling or something. Provide the DVD ID.");
+        System.out.println("Employee: Here it is: " + cust1.grabActiveRental().getDVD().getID());
+        cust1.grabActiveRental().setStatus(Rental.Status.Returned);
+        System.out.println("System: 3 Days X $0.10 = $0.30 Late Fee");
+        cust1.setLateCharges(cust1.getLateCharges() + 0.3);
+        System.out.println("System: Late charges applied to " + cust1.getName() + "'s account.");
+        System.out.println("System: Movie successfully returned.");
+        
+        System.out.println("\n\nHere is a quick view of the currently available and unavailable movies in the system:\n");
+        controller.printMoviesAndStatus();
+        System.out.println("***************************************************************");
+        
         
     }
 }
