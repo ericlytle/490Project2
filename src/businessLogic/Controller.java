@@ -6,6 +6,7 @@
 package businessLogic;
 
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Set;
 
@@ -288,5 +289,39 @@ public class Controller {
            }
        }
        return results;
-   }           
+   }
+   
+   //Deletes all the copies of the movie from the system, as well as the movie.
+   public void deleteMovie(Movie movie)
+   {
+       boolean allDVDsIn = true;
+       
+       for (Customer cust : customers)
+       {
+           for (Rental rent : cust.getRentals())
+           {
+               if (rent.getDVD().getMovie() == movie && rent.getStatus() != Rental.Status.Returned)
+               {
+                   allDVDsIn = false;
+               }
+           }
+       }
+       
+       if (allDVDsIn == false)
+       {
+           System.out.println("Please wait until all copies of the DVD have been returned.");
+       }
+       
+       if (allDVDsIn == true)
+       {
+           for (Iterator<DVD> it = dvds.iterator(); it.hasNext();)
+           {
+               DVD dvd = it.next();
+               if (dvd.getMovie() == movie)
+               {
+                   it.remove();
+               }
+           }
+       }      
+   }
 }

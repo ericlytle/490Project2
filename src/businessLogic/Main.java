@@ -134,7 +134,7 @@ public class Main {
         controller.printMoviesAndStatus();
         System.out.println("***************************************************************");
         //Scenario in which an employee check in a movie that a customer turned in 3 days late.
-        System.out.println("Hello Employee, what you like to do today?");
+        System.out.println("Hello Employee, what would you like to do today?");
         System.out.println("Employee: A customer, John Connor, has returned their movie, Eraser, 3 days late.");
         System.out.println("System: He was probably time travelling or something. Provide the DVD ID.");
         System.out.println("Employee: Here it is: " + cust1.grabActiveRental().getDVD().getID());
@@ -148,6 +148,19 @@ public class Main {
         controller.printMoviesAndStatus();
         System.out.println("***************************************************************");
         
+        //Management Duty
+        System.out.println("Management Scenario");
+        System.out.println("System: Hello Manager, what would you like to do today?");
+        System.out.println("Manager: The movie 'Jackie Chan's First Strike' hasn't been rented in 2 years. I no longer want to have it in the system.");
+        System.out.println("System: Please enter the movie ID.");
+        System.out.println("Manager: Here it is: " + 4);
+        
+        System.out.println("Successfully removed all copies of " + controller.findMovieByID(4).getName() + ".");
+        
+        controller.deleteMovie(controller.findMovieByID(4)); //Remove Movie and DVD's from the system.
+        
+        System.out.println("\n\nHere is a quick view of the currently available and unavailable movies in the system:\n");
+        controller.printMoviesAndStatus();      
         
     }
 }
